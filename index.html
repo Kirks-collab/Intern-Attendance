@@ -1,0 +1,518 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Intern Attendance and Reporting System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<section id="login" class="screen login-screen">
+
+    <div class="login-card">
+
+        <div class="logo">
+            🎓
+        </div>
+
+        <h1>Consolatrix College</h1>
+        <p>Intern Attendance and Reporting System</p>
+
+        <form onsubmit="login(event)">
+
+            <label>Email</label>
+            <input type="email"
+                   placeholder="Enter your email"
+                   required>
+
+            <label>Password</label>
+            <input type="password"
+                   placeholder="Enter your password"
+                   required>
+
+            <button class="primary-btn">
+                Login
+            </button>
+
+        </form>
+
+        <small>
+            OJT Coordinator Portal
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- APPLICATION -->
+<section id="app" class="hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            🎓
+            <div>
+                <strong>Consolatrix</strong>
+                <small>College of Toledo City</small>
+            </div>
+        </div>
+
+        <nav>
+
+            <button onclick="showPage('dashboard')">
+                🏠 Dashboard
+            </button>
+
+            <button onclick="showPage('interns')">
+                👥 Interns
+            </button>
+
+            <button onclick="showPage('attendance')">
+                🕒 Attendance
+            </button>
+
+            <button onclick="showPage('reports')">
+                📋 Daily Reports
+            </button>
+
+            <button onclick="showPage('progress')">
+                📊 OJT Progress
+            </button>
+
+            <button onclick="showPage('validation')">
+                ✓ Validation
+            </button>
+
+        </nav>
+
+        <button class="logout" onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header>
+
+            <div>
+                <h2>Intern Attendance and Reporting System</h2>
+                <span>OJT Coordinator Portal</span>
+            </div>
+
+            <div class="profile">
+                🔔
+                👤 Maria Santos
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <div id="dashboard" class="page">
+
+            <h1>Good morning, Maria!</h1>
+
+            <p class="subtitle">
+                Here's the latest overview of the OJT program.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+                    <span>👥</span>
+                    <p>Total Interns</p>
+                    <h2>42</h2>
+                    <small>+2 this month</small>
+                </div>
+
+                <div class="card">
+                    <span>🟢</span>
+                    <p>Active Interns</p>
+                    <h2>35</h2>
+                    <small>83% of total</small>
+                </div>
+
+                <div class="card">
+                    <span>🕒</span>
+                    <p>Total Hours</p>
+                    <h2>1,240</h2>
+                    <small>+120 this week</small>
+                </div>
+
+                <div class="card warning-card">
+                    <span>⚠️</span>
+                    <p>Attendance Issues</p>
+                    <h2>7</h2>
+                    <small>Needs attention</small>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel">
+
+                    <h3>OJT Progress</h3>
+
+                    <div class="progress-circle">
+                        82%
+                    </div>
+
+                    <div class="progress-info">
+                        <p>
+                            Required Hours
+                            <strong>1,440 hrs</strong>
+                        </p>
+
+                        <p>
+                            Completed Hours
+                            <strong>1,240 hrs</strong>
+                        </p>
+
+                        <p>
+                            Remaining Hours
+                            <strong>200 hrs</strong>
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3>Today's Attendance</h3>
+
+                    <div class="attendance-stats">
+
+                        <div>
+                            <strong>35</strong>
+                            <span>Present</span>
+                        </div>
+
+                        <div>
+                            <strong>2</strong>
+                            <span>Late</span>
+                        </div>
+
+                        <div>
+                            <strong>5</strong>
+                            <span>Absent</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>Recent Reports</h3>
+
+                <table>
+
+                    <tr>
+                        <th>Intern</th>
+                        <th>Date</th>
+                        <th>Hours</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>Kirk Bahena</td>
+                        <td>Oct 6, 2026</td>
+                        <td>8h 02m</td>
+                        <td><span class="status approved">Validated</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Jayfred Solteral</td>
+                        <td>Oct 6, 2026</td>
+                        <td>7h 48m</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Carl Jay Torres</td>
+                        <td>Oct 6, 2026</td>
+                        <td>8h 10m</td>
+                        <td><span class="status approved">Validated</span></td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTERNS -->
+        <div id="interns" class="page hidden">
+
+            <h1>Interns</h1>
+
+            <p class="subtitle">
+                Manage students currently undergoing OJT.
+            </p>
+
+            <div class="panel">
+
+                <table>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Position</th>
+                        <th>Progress</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>Kirk Selwyn Bahena</td>
+                        <td>Tech Solutions Inc.</td>
+                        <td>IT Support</td>
+                        <td>70%</td>
+                        <td>Active</td>
+                    </tr>
+
+                    <tr>
+                        <td>Jayfred Solteral</td>
+                        <td>DataSoft Corp.</td>
+                        <td>Web Developer</td>
+                        <td>60%</td>
+                        <td>Active</td>
+                    </tr>
+
+                    <tr>
+                        <td>Carl Jay Torres</td>
+                        <td>MedTech Systems</td>
+                        <td>Database Admin</td>
+                        <td>75%</td>
+                        <td>Active</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- ATTENDANCE -->
+        <div id="attendance" class="page hidden">
+
+            <h1>Attendance Records</h1>
+
+            <p class="subtitle">
+                Monitor intern time-in, time-out and rendered hours.
+            </p>
+
+            <div class="panel">
+
+                <table>
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Intern</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                        <th>Total Hours</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>Oct 6</td>
+                        <td>Kirk Bahena</td>
+                        <td>8:01 AM</td>
+                        <td>5:03 PM</td>
+                        <td>8h 02m</td>
+                        <td class="green">Present</td>
+                    </tr>
+
+                    <tr>
+                        <td>Oct 6</td>
+                        <td>Jayfred Solteral</td>
+                        <td>8:15 AM</td>
+                        <td>5:00 PM</td>
+                        <td>7h 45m</td>
+                        <td class="yellow">Late</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- DAILY REPORT -->
+        <div id="reports" class="page hidden">
+
+            <h1>Daily Reports</h1>
+
+            <p class="subtitle">
+                Review tasks and accomplishments submitted by interns.
+            </p>
+
+            <div class="report-card">
+
+                <h3>Kirk Selwyn Bahena</h3>
+
+                <p>
+                    <strong>Date:</strong> October 6, 2026
+                </p>
+
+                <p>
+                    <strong>Hours:</strong> 8h 02m
+                </p>
+
+                <hr>
+
+                <h4>Tasks Accomplished</h4>
+
+                <p>
+                    Assisted with database updating and helped
+                    troubleshoot computer systems.
+                </p>
+
+                <h4>Skills Learned</h4>
+
+                <p>
+                    Database management and basic network troubleshooting.
+                </p>
+
+                <button class="primary-btn"
+                        onclick="showPage('validation')">
+
+                    Review Report
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- VALIDATION -->
+        <div id="validation" class="page hidden">
+
+            <h1>Supervisor Validation</h1>
+
+            <p class="subtitle">
+                Validate submitted attendance and daily reports.
+            </p>
+
+            <div class="report-card">
+
+                <h2>Kirk Selwyn Bahena</h2>
+
+                <p>
+                    <strong>Company:</strong>
+                    Tech Solutions Inc.
+                </p>
+
+                <p>
+                    <strong>Attendance:</strong>
+                    8:01 AM – 5:03 PM
+                </p>
+
+                <p>
+                    <strong>Total:</strong>
+                    8h 02m
+                </p>
+
+                <h3>Daily Accomplishment</h3>
+
+                <p>
+                    Assisted with database updating and system
+                    troubleshooting.
+                </p>
+
+                <div class="actions">
+
+                    <button class="approve-btn">
+                        ✓ Validate
+                    </button>
+
+                    <button class="reject-btn">
+                        ✕ Reject
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+        <div id="progress" class="page hidden">
+
+            <h1>OJT Progress</h1>
+
+            <p class="subtitle">
+                Track required and completed OJT hours.
+            </p>
+
+            <div class="panel">
+
+                <h3>Kirk Selwyn Bahena</h3>
+
+                <div class="big-progress">
+                    <div style="width:82%">
+                        82%
+                    </div>
+                </div>
+
+                <div class="hours">
+
+                    <div>
+                        <strong>328</strong>
+                        <span>Completed</span>
+                    </div>
+
+                    <div>
+                        <strong>400</strong>
+                        <span>Required</span>
+                    </div>
+
+                    <div>
+                        <strong>72</strong>
+                        <span>Remaining</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
